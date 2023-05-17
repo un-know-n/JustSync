@@ -5,7 +5,9 @@
   "scripts": {
     "start:dev": "nx run-many --target=serve --projects=client,server",
     "backend:dev": "nx serve server",
-    "frontend:dev": "nx serve client"
+    "frontend:dev": "nx serve client",
+    "migrations:generate": "nx run server:typeorm-generate-migrations",
+    "migrations:run": "nx run server:typeorm-run-migrations"
   },
   "private": true,
   "dependencies": {
@@ -17,9 +19,12 @@
     "@angular/platform-browser": "~16.0.0",
     "@angular/platform-browser-dynamic": "~16.0.0",
     "@angular/router": "~16.0.0",
+    "@apollo/server": "^4.7.1",
+    "@nestjs/apollo": "^11.0.5",
     "@nestjs/common": "^9.1.1",
     "@nestjs/config": "^2.3.1",
     "@nestjs/core": "^9.1.1",
+    "@nestjs/graphql": "^11.0.5",
     "@nestjs/jwt": "^10.0.3",
     "@nestjs/passport": "^9.0.3",
     "@nestjs/platform-express": "^9.1.1",
@@ -28,6 +33,7 @@
     "@ngrx/effects": "^16.0.0",
     "@ngrx/store": "^16.0.0",
     "axios": "^1.0.0",
+    "graphql": "^16.6.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "pg": "^8.11.0",

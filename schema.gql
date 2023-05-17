@@ -1,0 +1,48 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateUserInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  removeUser(id: String!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+}
+
+type Query {
+  user(id: String!): User!
+  users: [User!]!
+}
+
+input UpdateUserInput {
+  email: String
+  id: String!
+  password: String
+}
+
+type User {
+  """User avatar link"""
+  avatar: String!
+
+  """User total disk space"""
+  diskSpace: Int!
+
+  """User email"""
+  email: String!
+
+  """User id"""
+  id: String!
+
+  """Show if user email is verified"""
+  isVerified: Boolean!
+
+  """User password"""
+  password: String!
+
+  """User used disk space"""
+  spaceUsed: Int!
+}
