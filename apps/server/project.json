@@ -4,6 +4,38 @@
   "sourceRoot": "apps/server/src",
   "projectType": "application",
   "targets": {
+    "build-migration-config": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "development",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/typeorm-migration",
+        "main": "apps/server/typeorm.config.ts",
+        "tsConfig": "apps/server/tsconfig.app.json",
+        "isolatedConfig": true,
+        "webpackConfig": "apps/server/webpack.config.js"
+      }
+    },
+    "typeorm-generate-migrations": {
+      "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "cwd": "apps/server",
+        "commands": ["typeorm -d ../../dist/apps/typeorm-migration/main.js migration:generate"]
+      },
+      "dependsOn": ["build-migration-config"]
+    },
+    "typeorm-run-migrations": {
+      "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "cwd": "apps/server",
+        "commands": ["typeorm -d ../../dist/apps/typeorm-migration/main.js migration:run"]
+      },
+      "dependsOn": ["build-migration-config"]
+    },
     "build": {
       "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],

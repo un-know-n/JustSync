@@ -10,7 +10,6 @@ node_modules
 
 # environment
 .env
-apps/server/.production.env
 
 # IDEs and editors
 /.idea
