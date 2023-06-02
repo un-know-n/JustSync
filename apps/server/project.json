@@ -23,7 +23,9 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "cwd": "apps/server",
-        "commands": ["typeorm -d ../../dist/apps/typeorm-migration/main.js migration:generate"]
+        "commands": [
+          "typeorm -d ../../dist/apps/typeorm-migration/main.js migration:generate"
+        ]
       },
       "dependsOn": ["build-migration-config"]
     },
@@ -32,7 +34,9 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "cwd": "apps/server",
-        "commands": ["typeorm -d ../../dist/apps/typeorm-migration/main.js migration:run"]
+        "commands": [
+          "typeorm -d ../../dist/apps/typeorm-migration/main.js migration:run"
+        ]
       },
       "dependsOn": ["build-migration-config"]
     },
@@ -90,6 +94,10 @@
           "codeCoverage": true
         }
       }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/server/Dockerfile . -t server"
     }
   },
   "tags": []

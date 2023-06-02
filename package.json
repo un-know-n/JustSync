@@ -3,11 +3,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:dev": "nx run-many --target=serve --projects=client,server",
-    "backend:dev": "nx serve server",
-    "frontend:dev": "nx serve client",
-    "migrations:generate": "nx run server:typeorm-generate-migrations",
-    "migrations:run": "nx run server:typeorm-run-migrations"
+    "start:dev": "npx nx run-many --target=serve --projects=client,server",
+    "build:production": "npx nx run-many --target=build --projects=client,server --prod",
+    "start:production": "npx nx run-many --target=serve --projects=client,server --prod",
+    "backend:dev": "npx nx serve server",
+    "frontend:dev": "npx nx serve client",
+    "frontend:production": "npx nx build client && npx nx serve client --prod",
+    "backend:production": "npx nx build server && npx nx serve server --prod",
+    "migrations:generate": "npx nx run server:typeorm-generate-migrations",
+    "migrations:run": "npx nx run server:typeorm-run-migrations"
   },
   "private": true,
   "dependencies": {

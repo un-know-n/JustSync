@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  # Postgres database
+  postgres:
+    container_name: postgres
+    image: postgres:15.0-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${TYPEORM_USERNAME}
+      - POSTGRES_PASSWORD=${TYPEORM_PASSWORD}
+      - POSTGRES_DB=${TYPEORM_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - default-network
+    ports:
+      - ${TYPEORM_PORT}:${TYPEORM_PORT}
+    expose:
+      - ${TYPEORM_PORT}
+
+  # Client
+  client:
+    container_name: client
+    build:
+      context: .
+      dockerfile: /apps/client/Dockerfile
+    networks:
+      - default-network
+    ports:
+      - 8080:80
+    depends_on:
+      - server
+      - postgres
+
+  # Server
+  server:
+    container_name: server
+    build:
+      context: .
+      dockerfile: /apps/server/Dockerfile
+    links:
+      - postgres
+    environment:
+      - TYPEORM_HOST=postgres
+    networks:
+      - default-network
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  default-network:
