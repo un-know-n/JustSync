@@ -11,6 +11,7 @@
     "frontend:production": "npx nx build client && npx nx serve client --prod",
     "backend:production": "npx nx build server && npx nx serve server --prod",
     "migrations:generate": "npx nx run server:typeorm-generate-migrations",
+    "migrations:revert": "npx nx run server:typeorm-revert-migrations",
     "migrations:run": "npx nx run server:typeorm-run-migrations"
   },
   "private": true,

@@ -29,6 +29,17 @@
       },
       "dependsOn": ["build-migration-config"]
     },
+    "typeorm-revert-migrations": {
+      "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "cwd": "apps/server",
+        "commands": [
+          "typeorm -d ../../dist/apps/typeorm-migration/main.js migration:revert"
+        ]
+      },
+      "dependsOn": ["build-migration-config"]
+    },
     "typeorm-run-migrations": {
       "executor": "nx:run-commands",
       "outputs": ["{options.outputPath}"],
