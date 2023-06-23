@@ -109,6 +109,14 @@
     "docker-build": {
       "dependsOn": ["build"],
       "command": "docker build -f apps/server/Dockerfile . -t server"
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["tsc -p tsconfig.app.json --noEmit"],
+        "cwd": "apps/server",
+        "forwardAllArgs": false
+      }
     }
   },
   "tags": []

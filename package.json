@@ -12,7 +12,8 @@
     "backend:production": "npx nx build server && npx nx serve server --prod",
     "migrations:generate": "npx nx run server:typeorm-generate-migrations",
     "migrations:revert": "npx nx run server:typeorm-revert-migrations",
-    "migrations:run": "npx nx run server:typeorm-run-migrations"
+    "migrations:run": "npx nx run server:typeorm-run-migrations",
+    "husky:prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -60,6 +61,9 @@
     "@angular/cli": "~16.0.0",
     "@angular/compiler-cli": "~16.0.0",
     "@angular/language-service": "~16.0.0",
+    "@commitlint/cli": "^17.6.5",
+    "@commitlint/config-angular": "^17.6.5",
+    "@commitlint/config-conventional": "^17.6.5",
     "@nestjs/schematics": "^9.1.0",
     "@nestjs/testing": "^9.1.1",
     "@ngrx/eslint-plugin": "^16.0.0",
@@ -84,10 +88,12 @@
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "husky": "^8.0.3",
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
     "jest-environment-node": "^29.4.1",
     "jest-preset-angular": "~13.1.0",
+    "lint-staged": "^13.2.2",
     "nx": "16.1.0",
     "prettier": "^2.6.2",
     "ts-jest": "^29.1.0",

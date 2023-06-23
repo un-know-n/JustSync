@@ -1,0 +1,21 @@
+{
+  "extends": ["@commitlint/config-angular"],
+  "helpUrl": "https://commitlint.js.org/#/reference-rules",
+  "rules": {
+    "type-enum": [
+      2,
+      "always",
+      ["build", "docs", "feat", "fix", "refactor", "revert"]
+    ],
+
+    "scope-max-length": [2, "always", 16],
+    "scope-min-length": [2, "always", 1],
+    "scope-empty": [2, "never"],
+    "scope-enum": [2, "always", ["server", "client", "db", "general"]],
+
+    "subject-case": [2, "always", ["sentence-case", "lower-case"]],
+
+    "header-max-length": [2, "always", 72],
+    "body-max-line-length": [2, "always", 72]
+  }
+}
